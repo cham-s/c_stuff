@@ -11,7 +11,6 @@ int main()
 	scanf("%d", &number);
 
 	sqr_num = ceil(sqrt(number));
-	printf("%d\n", sqr_num);
 	for (int i = 2 ; i <= sqr_num; i++)
 	{
 		if (number % i == 0)
@@ -20,5 +19,8 @@ int main()
 			break;
 		}
 	}
-	printf("The number %d number is%s prime", number, is_not_prime ? " not": "");
+	if ((is_not_prime == 0 && sqr_num != 1 ) || number == 2 || number == 3)
+		printf("The number %d number is prime", number);
+	else
+		printf("The number %d number is not prime", number);
 }
