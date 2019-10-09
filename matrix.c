@@ -6,7 +6,7 @@
 void	insert_size(char *, char *, int *);
 void	insert_elements(int [MAX][MAX], int, int, char *);
 void	print_matrix(int [MAX][MAX], int, int, char *);
-int		check_matrices(int, int);
+int		valid_matrices(int, int);
 
 int		main()
 {
@@ -19,12 +19,15 @@ int		main()
 		insert_size("col", "A",  &col_a);
 		insert_size("row", "B",  &row_b);
 		insert_size("col", "B",  &col_b);
-		if (check_matrices(col_a, row_b))
+		if (valid_matrices(col_a, row_b))
 			break;
 		printf("Size of col a must be equal to size of row b.\n");
 	}
 	insert_elements(a, row_a, col_a, "A");
-	insert_elements(a, row_b, col_b, "B");
+	insert_elements(b, row_b, col_b, "B");
+
+	print_matrix(a, row_a, col_a, "A");
+	print_matrix(b, row_b, col_b, "B");
 }
 
 void	insert_size(char *s, char *name, int *size)
@@ -60,7 +63,7 @@ void	print_matrix(int matrix[MAX][MAX], int row, int col, char *name)
 	printf("\n");
 }
 
-int		check_matrices(int col_a, int row_b)
+int		valid_matrices(int col_a, int row_b)
 {
 	return col_a == row_b;
 }
