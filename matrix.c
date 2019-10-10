@@ -3,13 +3,19 @@
 #define MAX 	50
 #define TRUE	1
 
+/*
+ The program takes as input two matrices and
+ output the product of both of them.
+ Note: The maximum row or column size is set to 50.
+ */
+
 int		row_a, row_b, col_a, col_b;
 int		a[MAX][MAX] = {0}, b[MAX][MAX] = {0}, p[MAX][MAX] = {0};
 void	insert_size(char *, char *, int *);
 void	insert_elements(int [MAX][MAX], int, int, char *);
 void	print_matrix(int [MAX][MAX], int, int, char *);
 int		valid_matrices(int, int);
-void	multiply_matrix();
+void	multiply_matrices();
 
 int		main()
 {
@@ -27,13 +33,13 @@ int		main()
 	insert_elements(a, row_a, col_a, "A");
 	insert_elements(b, row_b, col_b, "B");
 
-	multiply_matrix();
+	multiply_matrices();
 	print_matrix(a, row_a, col_a, "A");
 	print_matrix(a, row_b, col_b, "B");
 	print_matrix(p, col_a, row_b, "Product");
 }
 
-void	multiply_matrix()
+void	multiply_matrices()
 {
 	int	result;
 
