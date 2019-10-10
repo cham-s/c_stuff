@@ -3,15 +3,16 @@
 #define MAX 	50
 #define TRUE	1
 
+int		row_a, row_b, col_a, col_b;
+int		a[MAX][MAX] = {0}, b[MAX][MAX] = {0}, p[MAX][MAX] = {0};
 void	insert_size(char *, char *, int *);
 void	insert_elements(int [MAX][MAX], int, int, char *);
 void	print_matrix(int [MAX][MAX], int, int, char *);
 int		valid_matrices(int, int);
+void	multiply_matrix();
 
 int		main()
 {
-	int row_a, row_b, col_a, col_b;
-	int a[MAX][MAX] = {0}, b[MAX][MAX] = {0}, c[MAX][MAX] = {0};
 
 	while(TRUE)
 	{
@@ -26,8 +27,28 @@ int		main()
 	insert_elements(a, row_a, col_a, "A");
 	insert_elements(b, row_b, col_b, "B");
 
+	multiply_matrix();
 	print_matrix(a, row_a, col_a, "A");
-	print_matrix(b, row_b, col_b, "B");
+	print_matrix(a, row_b, col_b, "B");
+	print_matrix(p, col_a, row_b, "Product");
+}
+
+void	multiply_matrix()
+{
+	int	result;
+
+	for (int i = 0; i < row_a; i++)
+	{
+		for (int j = 0; j < col_b; j++)
+		{
+			result = 0;
+			for (int k = 0; k < col_a; k++)
+			{
+				result += a[i][k] * b[k][j];
+			}
+			p[i][j] = result;
+		}
+	}
 }
 
 void	insert_size(char *s, char *name, int *size)
